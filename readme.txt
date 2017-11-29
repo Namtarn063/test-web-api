@@ -1,2 +1,2 @@
-แนนทำตัวอย่าง http method ให้ดูนะ
-ไฟล์ test-api ลงศึกษาดูเน้อ
+Example of http method.
+in  test-api
