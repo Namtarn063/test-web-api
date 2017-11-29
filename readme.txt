@@ -1,5 +1,3 @@
 aaaaaaaaaaaaaaaaaaaaaa
 
 aaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaa
-ตายสะตาล
