@@ -18,17 +18,23 @@ let contactList = [
     
 ]
 
-router.get('/contactList/:id', (req, res) => {
-    let id = req.params.id
-    let contact = contactList[id-1]
-    res.send({contact})
-  })
-
 
 //req(request), res(respond)
 router.get('/contactList', (req, res) =>{
     res.json(contactList)
 })
+
+router.get('/contactList/id/:id', (req, res)=> {
+    res.json(contactList.find(contactList => contactList.id === req.params.id));
+})
+
+router.get('/contactList/firstname/:firstname', (req, res)=> {
+    res.json(contactList.find(contactList => contactList.firstname === req.params.firstname));
+ })
+
+ router.get('/contactList/lastname/:lastname', (req, res)=> {
+    res.json(contactList.find(contactList => contactList.lastname === req.params.lastname));
+ })
 
 router.post('/contactList', (req, res) =>{
     let newContact = req.body
@@ -37,6 +43,9 @@ router.post('/contactList', (req, res) =>{
     res.json(newContact)
 })
 
-
-
+router.delete('/contactList/:id', (req, res) => {
+    const deletedIndex = contactList.findIndex(contact => contact.id === req.params.id)
+    contactList.splice(deletedIndex, 1)
+    res.status(204).send()
+})
 module.exports = router
