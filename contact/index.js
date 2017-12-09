@@ -43,6 +43,28 @@ router.post('/contactList', (req, res) =>{
     res.json(newContact)
 })
 
+ router.post('/contactList/newContact',(req,res)=>{
+    let newContact = req.body
+    contactList.push(newContact)
+    
+    req.checkBody('firstname', 'firstname is required.').notEmpty();
+    req.checkBody('lastname', 'lastname is required.').notEmpty();
+    req.checkBody('email', 'email is required.').notEmpty();
+    var errors = req.validationErrors();
+    
+        if(errors){
+           res.send(errors);
+           return;
+        } else{
+            res.json({
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                email: req.body.email,
+                newContact
+            });
+        }
+      
+})
 router.delete('/contactList/:id', (req, res) => {
     const deletedIndex = contactList.findIndex(contact => contact.id === req.params.id)
     contactList.splice(deletedIndex, 1)
