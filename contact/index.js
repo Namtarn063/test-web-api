@@ -65,9 +65,13 @@ router.post('/contactList', (req, res) =>{
         }
       
 })
-router.delete('/contactList/:id', (req, res) => {
-    const deletedIndex = contactList.findIndex(contact => contact.id === req.params.id)
-    contactList.splice(deletedIndex, 1)
-    res.status(204).send()
+router.put('/contactList/:id', (req, res) => {
+    const updateIndex = contactList.findIndex(contactList => contactList.id === req.params.id)
+    res.json(Object.assign(contactList[updateIndex], req.body))
 })
+
+router.delete('/contactList/:id', (req, res) => {
+    const deletedIndex = contactList.findIndex(contactList => contactList.id === req.params.id)
+    contactList.splice(deletedIndex, 1)
+ })
 module.exports = router
